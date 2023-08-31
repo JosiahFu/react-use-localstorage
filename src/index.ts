@@ -8,7 +8,7 @@ import { useEffect, useState } from 'react';
  * @param initialState The initial state of the value. If the state has never been changed, this will replace the state, even if the initialState was different in the past
  * @param key The localStorage key. Should be unique for every instance per website to avoid reusing data.
  */
-function useLocalstorage<T>(initialState: T | (() => T), key: string) {
+function useLocalStorage<T>(initialState: T | (() => T), key: string) {
     const [state, setState] = useState<T>(() => JSON.parse(localStorage.getItem(key) || 'null') || initialState);
 
     useEffect(() => {
@@ -26,7 +26,7 @@ function useLocalstorage<T>(initialState: T | (() => T), key: string) {
  * @param initialState The initial state of the value. If the state has never been changed, this will replace the state, even if the initialState was different in the past.
  * @param key The localStorage key. Should be unique for every instance per website to avoid reusing data.
  */
-function useLocalstorageSynced<T>(initialState: T | (() => T), key: string) {
+function useLocalStorageSynced<T>(initialState: T | (() => T), key: string) {
     const [state, setState] = useState<T>(() => JSON.parse(localStorage.getItem(key) || 'null') || initialState);
 
     useEffect(() => {
@@ -45,4 +45,14 @@ function useLocalstorageSynced<T>(initialState: T | (() => T), key: string) {
     return [state, setState];
 }
 
-export { useLocalstorage, useLocalstorageSynced };
+/**
+ * @deprecated Use {@link useLocalStorage} instead
+ */
+const useLocalstorage = useLocalStorage;
+
+/**
+ * @deprecated Use {@link useLocalStorageSynced} instead
+ */
+const useLocalstorageSynced = useLocalStorageSynced;
+
+export { useLocalStorage, useLocalstorage, useLocalStorageSynced, useLocalstorageSynced };
