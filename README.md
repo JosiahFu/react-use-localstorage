@@ -1,7 +1,7 @@
 # `react-use-localstorage`
 
-React hook to provide a state backed by `localStorage`. If the state is changed
-and then the page is reloaded, the state should remain the same.
+React hook to store a state in `localStorage`. If the state is changed and then
+the page is reloaded, the state should remain the same.
 
 ## Example Usage
 
